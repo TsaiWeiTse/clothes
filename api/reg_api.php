@@ -15,7 +15,7 @@ if(isset($_POST["username"]) && isset($_POST["userpwd"]) && isset($_POST["userph
         // userState（是否啟用） Y是啟用，N是停權，預設是Y
         $sql = "INSERT INTO member(userName, userPwd, userPhone, userAddr, userMail, userAdmin, userState) VALUES ('$p_username', '$p_userpwd', '$p_userphone', '$p_useraddr', '$p_usermail', '2', 'Y')";
 
-        if(execute_sql($conn, 'id21250012_clothes', $sql)){
+        if(execute_sql($conn, 'id21250158_clothes', $sql)){
             echo '{"state" : true, "message" : "註冊成功"}';
         }else{
             echo '{"state" : false, "message" : "註冊失敗"}';

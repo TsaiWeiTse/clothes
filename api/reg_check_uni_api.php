@@ -8,7 +8,7 @@ if (isset($_POST["username"])) {
         $p_username = $_POST["username"];
 
         $sql = "SELECT userName FROM member WHERE userName = '$p_username'";
-        $result = execute_sql($conn, 'id21250012_clothes', $sql);
+        $result = execute_sql($conn, 'id21250158_clothes', $sql);
 
         if (mysqli_num_rows($result) == 0) {
             echo '{"state" : true, "message" : "此帳號不存在，可以使用"}';

@@ -9,7 +9,7 @@ if (isset($_POST["username"]) && isset($_POST["userpwd"])) {
         $p_userpwd = substr(md5($_POST["userpwd"]), 5, 5) . substr(md5($_POST["userpwd"]), 0, 3);
 
         $sql = "SELECT userName, userPwd FROM member WHERE userName = '$p_username' AND userPwd = '$p_userpwd'";
-        $result = execute_sql($conn, 'id21250012_clothes', $sql);
+        $result = execute_sql($conn, 'id21250158_clothes', $sql);
 
         if (mysqli_num_rows($result) == 1) {
             //登入成功
@@ -18,10 +18,10 @@ if (isset($_POST["username"]) && isset($_POST["userpwd"])) {
             $uid = substr(hash('sha256', uniqid(time())), 0, 10);
             //2. 也要儲存至資料庫
             $sql = "UPDATE member SET Uid = '$uid' WHERE userName = '$p_username'";
-            if (execute_sql($conn, 'id21250012_clothes', $sql)) {
+            if (execute_sql($conn, 'id21250158_clothes', $sql)) {
                 $sql = "SELECT Uid, userName, userPwd, userPhone, userAddr, userMail, userAdmin, userState FROM member WHERE userName = '$p_username' AND userPwd = '$p_userpwd'";
 
-                $result = execute_sql($conn, 'id21250012_clothes', $sql);
+                $result = execute_sql($conn, 'id21250158_clothes', $sql);
 
                 //撈取最新會員資料，儲存到陣列
                 $userDataBase = array();

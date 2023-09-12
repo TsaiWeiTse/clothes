@@ -9,7 +9,7 @@ if (isset($_POST["uid"])) {
 
         $sql = "SELECT Uid, userName, userPwd, userPhone, userAddr, userMail, userAdmin, userState FROM member WHERE Uid = '$p_uid'";
 
-        $result = execute_sql($conn, 'id21250012_clothes', $sql);
+        $result = execute_sql($conn, 'id21250158_clothes', $sql);
 
         if (mysqli_num_rows($result) == 1) {
             $userDataBase = array();
