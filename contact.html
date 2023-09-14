@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact（聯絡客服）</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    
+</head>
+
+<body>
+    <!-- 開頭 -->
+    <section id="s10">
+        <div class="container-fluid">
+            <div class="row">
+                <nav>
+                    <ul>
+                        <li class="logo"><img src="images/contact/logoko.png" style="height: 80px;" alt=""></li>
+                        <li class="items"><a href="#">Home</a></li>
+                        <li class="items"><a href="about.html">About</a></li>
+                        <li class="items"><a href="New.html">New</a></li>
+                        <li class="items dropdown">
+                            <a href="#" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Product</a>
+                            <ul class="dropdown-menu text-bg-dark mt-3">
+                                <li class="items"><a class="dropdown-item" href="pro_summer.html">Summer</a></li>
+                                <li class="items"><a class="dropdown-item" href="pro_winter.html">Winter</a></li>
+                            </ul>
+                        </li>
+                        <li class="items"><a href="#">Contact</a></li>
+                        <li class="items"><a href="qalist.html">Q&A</a></li>
+                        <li class="items">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" id="login_btn"><i
+                                    class="fa-solid fa-circle-user"></i></a>
+                        </li>
+                        <span>
+                            <h2 class="text-success d-none me-2" id="login_msg">Welcome to black</h2>
+                        </span>
+                        <li class="items">
+                            <a href="car.html" data-bs-toggle="modal" data-bs-target="#carModal" id="car_btn"><i
+                                    class="fa-solid fa-cart-shopping"></i></a>
+                        </li>
+                        <li class="items">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#adminModal" id="admin_btn"><i
+                                    class="fa-solid fa-user-shield"></i></a>
+                        </li>
+                        <li class="btn"><a href="#"><i class="fas fa-bars"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    <!-- carousel幻燈片 -->
+    <section id="s20">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active bg-cover"
+                    style="height: 768px; background-image: url(images/contact/幻燈片01.jpg);background-position: center center;">
+                </div>
+                <div class="carousel-item bg-cover" style="height: 768px; background-image: url(images/contact/幻燈片02.jpg);background-position: center center;">
+
+                </div>
+                <div class="carousel-item bg-cover" style="height: 768px; background-image: url(images/contact/幻燈片03.jpg);background-position: bottom center;">
+                </div>
+
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+    <!-- 開頭 -->
+
+    <!-- 表單 -->
+    <section id="s30" class="py-5" style="background-image: url(images/contact/contact背景圖.jpg);">
+        <div class="container">
+            <div class="row flex-column">
+                <h1 style="text-align: center; ">問題回饋</h1>
+                <div class="modal-body">
+                    <div class="col-md-2">
+                        <div class="mb-3">
+                            <label for="" class="form-label">姓名</label>
+                            <input type="text" class="form-control" id="" name="" placeholder="請輸入姓名">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="mb-3">
+                            <label for="" class="form-label">手機</label>
+                            <input type="text" class="form-control" id="" name="" 
+                            placeholder="請輸入手機號碼以連繫">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="" class="form-label">信箱</label>
+                            <input type="text" class="form-control" id="" name="" 
+                            placeholder="請輸入信箱以連繫">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label for="" class="form-label">問題回饋</label>
+                            <textarea class="form-control" id="" name="" rows="3"></textarea>
+                          </div>
+                    </div>
+                    <form class="d-flex ms-auto">
+                        <a href="#" class="btn btn-primary" id="">
+                            送出</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 表單 -->
+
+      <!--footer-->
+      <section class=" bg-black">
+        <div class="container-fluid">
+            <div class="text-center d-block">
+                <img src="images/contact/logoko.png" style="height: 180px; " alt="">
+                <div class="row mt-3">
+                   <div class="col-md-2"></div>
+                   <div class="col-md-8">
+                    <img src="images/contact/footer用圖01.jpg" style="width: 220px;" alt="">
+                    <img src="images/contact/footer用圖02.jpg" style="width: 220px;" alt="">
+                    <img src="images/contact/footer用圖03.jpg" style="width: 220px;" alt="">
+                    
+                   </div>
+                   <div class="col-md-2"></div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <h5><strong class="text-light">Copyright © 2023 台中思購衣網 by Shopping Clothes</strong></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/js_bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.btn').click(function () {
+                $('.items').toggleClass("show");
+                $('ul li').toggleClass("hide");
+            });
+        });
+    </script>
+</body>
+
+</html>
