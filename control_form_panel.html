@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表單管理</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+</head>
+<style>
+    @media screen and (max-width: 768px) {
+        .table-rwd thead {
+            display: none;
+        }
+
+        .table-rwd tbody tr {
+            display: block;
+            border: 4px solid var(--c02);
+            margin: 10px;
+        }
+
+        .table-rwd tbody tr td {
+            display: block;
+            font-size: 24px;
+            font-weight: 600;
+            overflow: hidden;
+            /* 溢位 跑版 最後才寫 不可能預知 */
+        }
+
+        .table-rwd tbody td::before {
+            content: attr(data-th)" : ";
+            /* attr()可以塞一個變數 */
+            color: var(--c08);
+            display: block;
+            float: left;
+            width: 6em;
+            text-align: right;
+            padding-right: 1em;
+        }
+
+        /* em 為字數 可以更細微的去排版 */
+        .table-rwd tbody tr td span.table-col {
+            display: block;
+            float: left;
+            width: calc(100% - 6em);
+        }
+    }
+</style>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">後臺表單管理</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">首頁</a>
+                    </li>
+                    </li>
+                    <li><a href="admin.html" class="btn btn-outline-warning mx-3">回上一頁</a>
+                    </li>
+                </ul>
+            </div>
+            <span class="h3 fw-700 text-danger me-3" id="login_message"></span>
+            <a href="#" class="btn btn-success" id="logout_btn">登出</a>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <table class="table table-striped table-bordered table-hover table-sm border-danger table-rwd">
+            <thead class="text-bg-dark">
+                <tr>
+                    <th width="5%">編號</th>
+                    <th width="10%">名稱</th>
+                    <th width="10%">電話</th>
+                    <th width="15%">信箱</th>
+                    <th width="35%">內容</th>
+                    <th width="15%">已讀</th>
+                    <th width="10%">#</th>
+                </tr>
+            </thead>
+            <tbody id="mytable">
+                <tr>
+                    <td data-th="編號"><span class="table-col">001</span></td>
+                    <td data-th="名稱"><span class="table-col">美式咖啡</span></td>
+                    <td data-th="電話"><span class="table-col">100</span></td>
+                    <td data-th="信箱"><span class="table-col">90</span></td>
+                    <td data-th="內容"><span class="table-col">9088</span></td>
+                    <td data-th="已讀"><span class="table-col">123</span></td>
+                    <td>
+                        <a href="#" class="btn btn-warning mx-3" data-bs-toggle="modal" data-bs-target="#updateModal"
+                            id="updata_btn">更新</a>
+                        <a href="#" class="btn btn-danger" id="delete_btn">刪除</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="js/js_bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="js/publiclink.js"></script>
+    <script src="js/regist_login.js"></script>
+    <script>
+        $(function () {
+            //確認uid是否存在，若存在傳至後端check_uid_api.php確認是否合法
+            if (getCookie("uid01") != "") {
+                //uid存在，傳至後端check_uid_api.php確認是否合法
+                $.ajax({
+                    type: "POST",
+                    // url: APILINKS + "check_uid_api.php",
+                    url: 'openapi\getOpendata.php',
+                    dataType: "json",
+                    data: { uid01: getCookie("uid01") },
+                    async: false,
+                    success: showdata_check_uid,
+                    error: function () {
+                        // alert("error-" + APILINKS + "check_uid_api.php");
+                        alert("error-openapi\getOpendata.php");
+                    },
+                });
+            } else {
+
+                alert("請先登入會員 ! !");
+                location.href = "index.html";
+            }
+        });
+        // 監聽要放在這裡面
+        function showdata_check_uid(data) {
+
+            if (data.data[0].userAdmin == "1") {
+                $("#login_message").text("管理員：" + data.data[0].userName);
+                $.ajax({
+                    type: "GET",
+                    // url: "api/form_r_api.php",
+                    url: 'openapi\getOpendata.php',
+                    dataType: "json",
+                    async: false,
+                    success: showdata_table,
+                    error: function () {
+                        // alert("串接資料錯誤-form_r_api.php");
+                        alert("串接資料錯誤-openapi\getOpendata.php");
+                    }
+                });
+
+                //delete_btn監聽
+                $("#mytable #delete_btn").click(function () {
+                    console.log($(this).data("id"));
+                    console.log($(this).data("username"));
+                    if (confirm("確認刪除: " + $(this).data("username") + "?")) {
+                        $.ajax({
+                            type: "POST",
+                            // url: "api/form_d_api.php",
+                            url: 'openapi\getOpendata.php',
+                            data: { id: $(this).data("id") },
+                            dataType: "json",
+                            success: showdata_delete,
+                            error: function () {
+                                // alert("error-api/form_d_api.php");
+                                alert("error-openapi\getOpendata.php");
+                            }
+                        });
+                    }
+                });
+
+                //update_btn監聽
+                $("#mytable #update_btn").click(function () {
+                    console.log($(this).data("id"));
+                    console.log($(this).data("username"));
+                    console.log($(this).data("p_active"));
+
+                    $("#username").val($(this).data("username"));
+                    $("#p_active").val($(this).data("p_active"));
+
+                    u_id = $(this).data("id");
+                });
+
+                //modal_update_btn按鈕監聽
+                $("#modal_update_btn").click(function () {
+
+                    $.ajax({
+                        type: "POST",
+                        // url: "api/form_u_api.php",
+                        url: 'openapi\getOpendata.php',
+                        data: {
+                            id: u_id,
+                            p_active: $("#p_active").val(),
+                        },
+                        dataType: "json",
+                        success: showdata_update,
+                        error: function () {
+                            // alert("error-api/form_u_api.php");
+                            alert("error-openapi\getOpendata.php");
+                        }
+                    });
+                });
+                $("#login_out_btn").click(function () {
+                    logout();
+                });
+
+                //監聽switch 
+                $("#mytable #switch01").change(function () {
+                    var readstate, state_id;
+
+                    if ($(this).is(':checked')) {
+                        console.log('已讀' + $(this).data('id'));
+                        readstate = 'Y';
+                        state_id = $(this).data('id');
+                        $(this).next().text('已讀');
+                        $(this).next().removeClass('text-danger');
+                        $(this).next().addClass('text-success');
+                    } else {
+                        readstate = 'N';
+                        state_id = $(this).data('id');
+                        console.log('未讀' + $(this).data('id'));
+                        $(this).next().text('未讀');
+                        $(this).next().removeClass('text-success');
+                        $(this).next().addClass('text-danger');
+                    }
+                    $.ajax({
+                        type: "POST",
+                        // url: "api/form_u_api_userstate_api.php",
+                        url: 'openapi\getOpendata.php',
+                        data: {
+                            id: state_id,
+                            active: readstate
+                        },
+                        dataType: "json",
+                        success: showdata_u_userState,
+                        error: function () {
+                            // alert("error-api/form_u_api_userstate_api.php");
+                            alert("error-openapi\getOpendata.php");
+                        }
+                    });
+                });
+            } else {
+                // uid 驗證失敗
+                alert("你不是管理員 ! !");
+                location.href = "index.html";
+            }
+        }
+        //將內容放入網頁
+        function showdata_table(data) {
+            console.log(data);
+            if (data.state) {
+                $("#mytable").empty();
+                data.data.forEach(function (item) {
+                    console.log(item);
+
+
+                    if (item.f_Active == 'Y') {
+                        var switch01 = '<div class="text-success mb-3 form-check form-switch"><input type="checkbox" class="form-check-input" role="switch" checked id="switch01" data-id="' + item.ID + '"><label for="" class="form-check-label">已讀</label></div>';
+                    } else {
+                        var switch01 = '<div class="text-danger mb-3 form-check form-switch"><input type="checkbox" class="form-check-input" role="switch" id="switch01" data-id="' + item.ID + '"><label for="" class="form-check-label">未讀</label></div>';
+                    }
+
+                    var strHTML = '<tr><td data-th="編號"><span class="table-col">' + item.ID + '</span></td><td data-th="名稱"><span class="table-col">' + item.f_UserName + '</span></td><td data-th="電話"><span class="table-col">' + item.f_Phone + '</span></td><td data-th="信箱"><span class="table-col">' + item.f_Mail + '</span><td data-th="內容"><span class="table-col">' + item.f_Text + '</span></td></td><td data-th="已讀"><span class="table-col">' + switch01 + '</span></td><td><a href="#" class="btn btn-danger" data-id="' + item.ID + '" data-username="' + item.f_UserName + '" id="delete_btn">刪除</a></td></tr>';
+
+                    $("#mytable").append(strHTML);
+                });
+            } else {
+                alert(data.message);
+            }
+        }
+        function showdata_update(data) {
+            if (data.state) {
+                alert(data.message);
+                location.href = "control_form_panel.html";
+            } else {
+                alert(data.message);
+            }
+        }
+
+        function showdata_delete(data) {
+            console.log("123");
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "control_form_panel.html"
+            } else {
+                alert(data.message);
+            }
+        }
+
+        function logout() {
+            setCookie('uid01', '', 7);
+            location.href = "index.html";
+        }
+
+        function showdata_u_userState(data) {
+            console.log(data);
+            if (data.state) {
+                // 帳號更新成功
+                alert(data.message);
+            } else {
+                // 帳號更新失敗
+                alert(data.message);
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

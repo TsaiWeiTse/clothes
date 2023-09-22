@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/navbar.css">
-    
+    <link rel="stylesheet" href="css/toTop.css">
+
     <style>
         nav ul li.items.userMessage:after {
             position: absolute;
@@ -24,6 +25,21 @@
             opacity: 0;
             transition: all 0.2s linear;
         }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .text-inside-image {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 5px;
+            font-size: 14px;
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -35,18 +51,11 @@
             <div class="row">
                 <nav>
                     <ul>
-                        <li class="logo"><img src="images/index/logoko.png" style="height: 80px;" alt=""></li>
-                        <li class="items"><a href="#">Home</a></li>
+                        <li class="logo"><a href="index.html"><img src="images/index/logoko.png" style="height: 80px;" alt=""></a></li>
+                        <li class="items"><a href="index.html">Home</a></li>
                         <li class="items"><a href="about.html">About</a></li>
                         <li class="items"><a href="New.html">New</a></li>
-                        <li class="items dropdown">
-                            <a href="#" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">Product</a>
-                            <ul class="dropdown-menu text-bg-dark mt-3">
-                                <li class="items"><a class="dropdown-item" href="pro_summer.html">Summer</a></li>
-                                <li class="items"><a class="dropdown-item" href="pro_winter.html">Winter</a></li>
-                            </ul>
-                        </li>
+                        <li class="items"><a href="product.html">Product</a></li>
                         <li class="items"><a href="contact.html">Contact</a></li>
                         <li class="items"><a href="qalist.html">Q&A</a></li>
                         <li class="items" id="user_btn">
@@ -55,10 +64,10 @@
                             </a>
                         </li>
                         <li class="items d-none" id="car_btn">
-                            <a href="https://twjzi14200.000webhostapp.com/car.html" target="_blank"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a href="car.html" target="_blank"><i class="fa-solid fa-cart-shopping"></i></a>
                         </li>
                         <li class="items d-none" id="admin_btn">
-                            <a href="https://twjzi14200.000webhostapp.com/admin.html"target="_blank"><i class="fa-solid fa-user-shield"></i></a>
+                            <a href="admin.html" target="_blank"><i class="fa-solid fa-user-shield"></i></a>
                         </li>
                         <li class="items userMessage d-flex justify-content-between">
                             <h2 class="text-white mb-0 d-none" id="login_message">歡迎xxx回來</h2>
@@ -71,7 +80,6 @@
             </div>
         </div>
     </section>
-
     <!--loginModal-->
     <!-- Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -142,7 +150,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="userpwd" class="form-label">密碼</label>
-                                <input type="userpwd" id="userpwd" name="userpwd" class="form-control"
+                                <input type="password" id="userpwd" name="userpwd" class="form-control"
                                     placeholder="請輸入密碼 6~16字">
                                 <div class="valid-feedback">密碼輸入格式正確</div>
                                 <div class="invalid-feedback">密碼輸入格式錯誤</div>
@@ -189,7 +197,7 @@
 
     <!--s20 banner -->
     <!-- banner圖片 -->
-    <section id="s20" class="bg-cover banner_image" style="background-image: url(images/index/index主題圖.jpg);"></section>
+    <section id="s20" class="bg-cover banner_image" style="background-image: url(images/index/index_theme01.jpg);"></section>
 
 
     <!--s30 -->
@@ -198,13 +206,13 @@
             <div class="row">
                 <div class="col-md-6 p-0">
                     <div class="categories_item categories_large_item">
-                        <img src="images/index/清涼素色連衣裙.jpg" alt="" class="img-fluid">
+                        <img src="images/index/index_pro01.jpg" alt="" class="img-fluid">
                         <div class="categories_text">
                             <h3>夏季熱門</h3>
                             <h2>清涼素色連衣裙</h2>
-                            <p>迎接夏天的準備好了嗎？我們自豪地介紹我們的夏日輕盈風格連身洋裝，為您的夏季穿搭增添了清新的風格和極大的舒適感。這款連身洋裝是夏日必備，適合各種場合，無論是海灘度假、野餐、購物或夜晚派對，都能為您帶來時尚與自信。
+                            <p class="text-white">迎接夏天的準備好了嗎？我們自豪地介紹我們的夏日輕盈風格連身洋裝，為您的夏季穿搭增添了清新的風格和極大的舒適感。這款連身洋裝是夏日必備，適合各種場合，無論是海灘度假、野餐、購物或夜晚派對，都能為您帶來時尚與自信。
                             </p>
-                            <a href="#">Buy now</a>
+                            <a href="product.html">Buy now</a>
                         </div>
                     </div>
                 </div>
@@ -212,41 +220,41 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-6 col-12 p-0">
                             <div class="categories_item text-light">
-                                <img src="images/index/清涼棉質短袖上衣.jpg" alt="" class="img-fluid">
+                                <img src="images/index/index_pro02.jpg" alt="" class="img-fluid">
                                 <div class="categories_text">
                                     <h4>夏季推薦!</h4>
                                     <p>涼爽夏季棉質T恤</p>
-                                    <a href="#">Buy now</a>
+                                    <a href="product.html">Buy now</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-6 col-12 p-0">
                             <div class="categories_item ">
-                                <img src="images/index/透氣運動短褲.jpg" alt="" class="img-fluid">
+                                <img src="images/index/index_pro03.jpg" alt="" class="img-fluid">
                                 <div class="categories_text text-light">
                                     <h4>夏季推薦!</h4>
                                     <p>透氣運動短褲</p>
-                                    <a href="#">Buy now</a>
+                                    <a href="product.html">Buy now</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-6 col-12 p-0">
                             <div class="categories_item">
-                                <img src="images/index/保暖羊毛大衣.jpg" alt="" class="img-fluid">
+                                <img src="images/index/index_pro04.jpg" alt="" class="img-fluid">
                                 <div class="categories_text text-light">
                                     <h4>冬季推薦!</h4>
                                     <p>保暖羊毛大衣</p>
-                                    <a href="#">Buy now</a>
+                                    <a href="product.html">Buy now</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-6 col-12 p-0">
                             <div class="categories_item">
-                                <img src="images/index/保暖羽絨外套.jpg" alt="" class="img-fluid">
+                                <img src="images/index/index_pro05.jpg" alt="" class="img-fluid">
                                 <div class="categories_text text-light">
                                     <h4>冬季推薦!</h4>
                                     <p>保暖羽絨外套</p>
-                                    <a href="#">Buy now</a>
+                                    <a href="product.html">Buy now</a>
                                 </div>
                             </div>
                         </div>
@@ -257,10 +265,10 @@
     </section>
 
     <section id="s31" class="mt-5">
-        <div class="container-fluid p-0" style="background-image: url(images/index/index背景圖02.jpg);">
+        <div class="container-fluid p-0" style="background-image: url(images/index/index_theme03.jpg);">
             <div class="row align-items-center">
                 <div class="col-md-6 bg-cover">
-                    <img src="images/index/index圖片01.jpg" alt=""
+                    <img src="images/index/index_theme04.jpg" alt=""
                         class="img-fluid animate__animated animate__rollIn animate__delay-2s ms-3">
                 </div>
                 <div class="col-md-6">
@@ -289,65 +297,33 @@
             <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
                 <div class="col">
                     <div class="card h-100">
-                        <img src="images/index/保暖羊毛大衣.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-title fw-700">保暖羊毛大衣</h3>
-                            <p class="card-text" style="font-size: 20px;">在寒冷的季節裡，我們的羊毛大衣為您提供極致保暖，同時讓您在寒風中綻放時尚。</p>
-                        </div>
-                        <a href="#" class="btn btn-outline-info">Purchase</a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="images/index/經典款毛線帽.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-title fw-700">經典款毛線帽</h3>
-                            <p class="card-text" style="font-size: 20px;">我們的毛線帽不僅是冬季必備，還是您個性的展現，讓您的頭部感到舒適和時尚。</p>
-                        </div>
-                        <a href="#" class="btn btn-outline-info">Purchase</a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="images/index/保暖緹花圍巾.jpg" class="card-img-top" alt="...">
+                        <img src="images/index/index_pro11.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h3 class="card-title fw-700">保暖緹花圍巾</h3>
                             <p class="card-text" style="font-size: 20px;">這條精美的圍巾不僅為您提供保暖，還能為您的冬季服裝增添一絲優雅，成為您的時尚配飾。</p>
                         </div>
-                        <a href="#" class="btn btn-outline-info">Purchase</a>
+                        <a href="product.html" class="btn btn-outline-info">了解更多</a>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="images/index/簡約百褶裙.jpg" class="card-img-top" alt="...">
+                        <img src="images/index/index_pro06.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h3 class="card-title fw-700">簡約百褶裙</h3>
-                            <p class="card-text" style="font-size: 20px;">
-                                優雅的設計與涼爽的材料相得益彰，這條百褶裙將為您的夏季風格增添一絲精緻，讓您在炎炎夏日中光彩綻放。</p>
+                            <h3 class="card-title fw-700">經典款毛線帽</h3>
+                            <p class="card-text" style="font-size: 20px;">我們的毛線帽不僅是冬季必備，還是您個性的展現，讓您的頭部感到舒適和時尚。</p>
                         </div>
-                        <a href="#" class="btn btn-outline-info">Purchase</a>
+                        <a href="product.html" class="btn btn-outline-info">了解更多</a>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="images/index/夏季短款牛仔褲.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-title fw-700">夏季短款牛仔褲</h3>
-                            <p class="card-text" style="font-size: 20px;">短款牛仔褲是夏季的代名詞，我們的款式結合了潮流元素，為您的夏日造型增添了一份自由和個性。
-                            </p>
-                        </div>
-                        <a href="#" class="btn btn-outline-info">Purchase</a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="images/index/時尚露肩上衣.jpg" class="card-img-top" alt="...">
+                        <img src="images/index/index_pro07.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h3 class="card-title fw-700">時尚露肩上衣</h3>
                             <p class="card-text" style="font-size: 20px;">性感的露肩設計使這款上衣充滿魅力，無論是晚間派對還是與朋友見面，都能營造迷人的夏日風格。
                             </p>
                         </div>
-                        <a href="#" class="btn btn-outline-info">Purchase</a>
+                        <a href="product.html" class="btn btn-outline-info">了解更多</a>
                     </div>
                 </div>
     </section>
@@ -366,28 +342,28 @@
                 </div>
 
                 <div class="carousel-inner">
-                    <div class="carousel-item active banner_item">
-                        <img src="images/index/經典款長款大衣.jpg" class="d-block w-100 banner_img" alt="...">
+                    <div class="carousel-item  banner_item">
+                        <img src="images/index/index_pro08.jpg" class="d-block w-100 banner_img" alt="...">
                         <div class="carousel-caption top-0  mt-4 d-none d-md-block">
                             <p class="mt-5 fs-3 text-uppercase">夏季熱門商品</p>
                             <h1 class="display-1 fw-bolder text-capitalize">輕盈風格連身洋裝</h1>
-                            <button class="btn btn-primary px-4 py-2 fs-5 mt-5">Buy now</button>
+                            <a href="product.html"><button class="btn btn-primary px-4 py-2 fs-5 mt-5">Buy now</button></a>
                         </div>
                     </div>
                     <div class="carousel-item active banner_item">
-                        <img src="images/index/夏季短款牛仔褲.jpg" class="d-block w-100 banner_img" alt="...">
+                        <img src="images/index/index_pro09.jpg" class="d-block w-100 banner_img" alt="...">
                         <div class="carousel-caption top-0  mt-4 d-none d-md-block">
                             <p class="mt-5 fs-3 text-uppercase">夏季推薦商品</p>
                             <h1 class="display-1 fw-bolder text-capitalize">運動休閒夏季短褲</h1>
-                            <button class="btn btn-primary px-4 py-2 fs-5 mt-5">Buy now</button>
+                            <a href="product.html"><button class="btn btn-primary px-4 py-2 fs-5 mt-5">Buy now</button></a>
                         </div>
                     </div>
-                    <div class="carousel-item active banner_item">
-                        <img src="images/index/冬季厚底靴.jpg" class="d-block w-100 banner_img" alt="...">
+                    <div class="carousel-item  banner_item">
+                        <img src="images/index/index_pro10.jpg" class="d-block w-100 banner_img" alt="...">
                         <div class="carousel-caption top-0  mt-4 d-none d-md-block">
                             <p class="mt-5 fs-3 text-uppercase">冬季熱門商品</p>
                             <h1 class="display-1 fw-bolder text-capitalize">暖心羊毛連帽大衣</h1>
-                            <button class="btn btn-primary px-4 py-2 fs-5 mt-5">Buy now</button>
+                            <a href="product.html"><button class="btn btn-primary px-4 py-2 fs-5 mt-5">Buy now</button></a>
                         </div>
                     </div>
                 </div>
@@ -406,7 +382,7 @@
     </section>
 
     <!-- s60 shop_method-->
-    <section id="" class="shop_method_area spad" style="background-image: url(images/index/index背景圖01.jpg);">
+    <section id="" class="shop_method_area spad" style="background-image: url(images/index/index_theme02.jpg);">
         <div class="container">
             <div class="row d-flex justify-content-between">
                 <div class="col-lg-3 col-md-6 col-sm-12">
@@ -438,31 +414,53 @@
         </div>
     </section>
 
-    <!--footer-->
     <!-- footer -->
-    <section class=" bg-black">
-        <div class="container-fluid">
-            <div class="text-center d-block">
-                <img src="images/index/logoko.png" style="height: 180px; " alt="">
-                <div class="row mt-3">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <img src="images/index/footer用圖01.jpg" style="width: 220px;" alt="">
-                        <img src="images/index/footer用圖02.jpg" style="width: 220px;" alt="">
-                        <img src="images/index/footer用圖03.jpg" style="width: 220px;" alt="">
-
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="row mt-3">
-                        <div class="col-12">
-                            <h5><strong class="text-light">Copyright © 2023 台中思購衣網 by Shopping Clothes</strong>
-                            </h5>
+<section class="bg-black py-5">
+    <div class="container">
+        <div class="text-center">
+            <img src="images/contact/logoko.png" style="height: 180px;" alt="Logo">
+            <div class="row mt-4">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <!-- 在 md 和 sm 屏幕上垂直排列 -->
+                        <div class="col-md-4 mb-4">
+                            <div class="position-relative">
+                                <a href="https://zh-tw.facebook.com/">
+                                    <img src="images/index/footer01.jpg" style="width: 100%;" alt="Facebook">
+                                    <div class="text-inside-image">Facebook</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="position-relative">
+                                <a href="https://www.instagram.com/">
+                                    <img src="images/index/footer02.jpg" style="width: 100%;" alt="Instagram">
+                                    <div class="text-inside-image">Instagram</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="position-relative">
+                                <a href="https://www.youtube.com/">
+                                    <img src="images/index/footer03.jpg" style="width: 100%;" alt="YouTube">
+                                    <div class="text-inside-image">YouTube</div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <h5 class="text-light text-center">Copyright © 2023 台中思購衣網 by Shopping Clothes</h5>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+            <div class="back-top hide" title="回頂部"></div>
+</section>
 
 
 
@@ -474,13 +472,17 @@
     <script src="js/index_banner.js"></script>
     <script src="js/publiclink.js"></script>
     <script src="js/regist_login.js"></script>
+    <script src="js/uid01.js"></script>
+    <script src="js/toTop.js"></script>
 
 
     <script>
-        anime.timeline({ loop: false })
-        // Wrap every letter in a span
-        var textWrapper = document.querySelector('.ml2');
-        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+        $(document).ready(function () {
+            $('.btn').click(function () {
+                $('.items').toggleClass("show");
+                $('ul li').toggleClass("hide");
+            });
+        });
 
         anime.timeline({ loop: false })
             .add({
@@ -509,7 +511,7 @@
                 }
             });
     </script>
-    
+
 </body>
 
 </html>
