@@ -10,15 +10,15 @@ $(function () {
     //uid存在，傳至後端check_uid_api.php確認是否合法
     $.ajax({
       type: "POST",
-      // url: APILINKS + "check_uid_api.php",
-      url: 'openapi\getOpendata.php',
+      url: APILINKS + "check_uid_api.php",
+      // url: 'openapi\getOpendata.php',
       dataType: "json",
       data: { uid01: getCookie("uid01") },
       async: false,
       success: showdata_check_uid,
       error: function () {
-        // alert("error-" + APILINKS + "check_uid_api.php");
-        alert("error-openapi\getOpendata.php");
+        alert("error-" + APILINKS + "check_uid_api.php");
+        // alert("error-openapi\getOpendata.php");
       },
     });
   }

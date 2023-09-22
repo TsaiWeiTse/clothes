@@ -16,14 +16,14 @@ $(function () {
       // 確認帳號名稱是否重複
       $.ajax({
         type: "POST",
-        // url: APILINKS + "reg_check_uni_api.php",
-        url: 'openapi\getOpendata.php',
+        url: APILINKS + "reg_check_uni_api.php",
+        // url: 'openapi\getOpendata.php',
         data: { username: $("#username").val() },
         dataType: "json",
         success: showdata_check_uni,
         error: function () {
-          // alert("帳號確認-" + APILINKS + "reg_check_uni_api.php");
-          alert("帳號確認-openapi\getOpendata.php");
+          alert("帳號確認-" + APILINKS + "reg_check_uni_api.php");
+          // alert("帳號確認-openapi\getOpendata.php");
         },
       });
     } else {
@@ -137,8 +137,8 @@ $(function () {
       // 欄位輸入正確，可傳至API
       $.ajax({
         type: "POST",
-        // url: APILINKS + "reg_api.php",
-        url: 'openapi\getOpendata.php',
+        url: APILINKS + "reg_api.php",
+        // url: 'openapi\getOpendata.php',
         data: {
           username: $("#username").val(),
           userpwd: $("#userpwd").val(),
@@ -149,8 +149,8 @@ $(function () {
         dataType: "json",
         success: showdata_reg,
         error: function () {
-          // alert("註冊錯誤-" + APILINKS + "reg_api.php");
-          alert("註冊錯誤-openapi\getOpendata.php");
+          alert("註冊錯誤-" + APILINKS + "reg_api.php");
+          // alert("註冊錯誤-openapi\getOpendata.php");
         },
       });
     } else {
@@ -163,8 +163,8 @@ $(function () {
   $("#login_btn").click(function () {
     $.ajax({
       type: "POST",
-      // url: APILINKS + "login_api.php",
-      url: 'openapi\getOpendata.php',
+      url: APILINKS + "login_api.php",
+      // url: 'openapi\getOpendata.php',
       data: {
         username: $("#login_username").val(),
         userpwd: $("#login_password").val(),
@@ -173,8 +173,8 @@ $(function () {
       async: false,
       success: showdata_login,
       error: function () {
-        // alert("登入相關錯誤-" + APILINKS + "login_api.php");
-        alert("登入相關錯誤-openapi\getOpendata.php");
+        alert("登入相關錯誤-" + APILINKS + "login_api.php");
+        // alert("登入相關錯誤-openapi\getOpendata.php");
       },
     });
   });
