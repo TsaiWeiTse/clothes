@@ -163,8 +163,9 @@ $(function () {
   $("#login_btn").click(function () {
     $.ajax({
       type: "POST",
-      url: APILINKS + "login_api.php",
+      // url: APILINKS + "login_api.php",
       // url: 'openapi\getOpendata.php',
+      url: 'openapi\data_login_api.php',
       data: {
         username: $("#login_username").val(),
         userpwd: $("#login_password").val(),
@@ -173,8 +174,9 @@ $(function () {
       async: false,
       success: showdata_login,
       error: function () {
-        alert("登入相關錯誤-" + APILINKS + "login_api.php");
+        // alert("登入相關錯誤-" + APILINKS + "login_api.php");
         // alert("登入相關錯誤-openapi\getOpendata.php");
+        alert("登入相關錯誤-openapi\data_login_api.php");
       },
     });
   });
