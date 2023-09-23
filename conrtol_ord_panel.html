@@ -184,7 +184,7 @@
                 // 升級為高級會員
                 upMemberLevel() {
                     const vm = this;
-                    const requiredTotal = 100000;
+                    const requiredTotal = 20000;
                     const currentTotal = vm.total; // 目前累積總額
 
                     if (currentTotal < requiredTotal) {
@@ -213,7 +213,7 @@
                 },
 
                 MemberLevel(totalAmount) {
-                    if (totalAmount >= 100000) {
+                    if (totalAmount >= 20000) {
                         return '高級會員';
                     } else {
                         return '普通會員';

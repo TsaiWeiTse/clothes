@@ -9,20 +9,21 @@
   <link rel="stylesheet" href="css/car_css.css" />
   <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/all.min.css" />
+  <link rel="stylesheet" href="css/toTop.css">
 </head>
 
 <style>
-        .text-inside-image {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            padding: 5px;
-            font-size: 14px;
-            width: 100%;
-        }
-    </style>
+  .text-inside-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 5px;
+    font-size: 14px;
+    width: 100%;
+  }
+</style>
 
 <body>
   <!-- navbar -->
@@ -31,7 +32,8 @@
       <div class="row">
         <nav>
           <ul>
-            <li class="logo"><a href="index.html"><img src="images/index/logoko.png" style="height: 80px;" alt=""></a></li>
+            <li class="logo"><a href="index.html"><img src="images/index/logoko.png" style="height: 80px;" alt=""></a>
+            </li>
             <li class="items"><a href="index.html">Home</a></li>
             <li class="items"><a href="about.html">About</a></li>
             <li class="items"><a href="New.html">New</a></li>
@@ -165,52 +167,52 @@
   </section>
   <!-- 結帳 -->
   <!-- footer -->
-    <section class="bg-black py-5">
-        <div class="container">
-            <div class="text-center">
-                <img src="images/contact/logoko.png" style="height: 180px;" alt="Logo">
-                <div class="row mt-4">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <!-- 在 md 和 sm 屏幕上垂直排列 -->
-                            <div class="col-md-4 mb-4">
-                                <div class="position-relative">
-                                    <a href="https://zh-tw.facebook.com/">
-                                        <img src="images/index/footer01.jpg" style="width: 100%;" alt="Facebook">
-                                        <div class="text-inside-image">Facebook</div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-4">
-                                <div class="position-relative">
-                                    <a href="https://www.instagram.com/">
-                                        <img src="images/index/footer02.jpg" style="width: 100%;" alt="Instagram">
-                                        <div class="text-inside-image">Instagram</div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-4">
-                                <div class="position-relative">
-                                    <a href="https://www.youtube.com/">
-                                        <img src="images/index/footer03.jpg" style="width: 100%;" alt="YouTube">
-                                        <div class="text-inside-image">YouTube</div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
+  <section class="bg-black py-5">
+    <div class="container">
+      <div class="text-center">
+        <img src="images/contact/logoko.png" style="height: 180px;" alt="Logo">
+        <div class="row mt-4">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <div class="row">
+              <!-- 在 md 和 sm 屏幕上垂直排列 -->
+              <div class="col-md-4 mb-4">
+                <div class="position-relative">
+                  <a href="https://zh-tw.facebook.com/">
+                    <img src="images/index/footer01.jpg" style="width: 100%;" alt="Facebook">
+                    <div class="text-inside-image">Facebook</div>
+                  </a>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-12">
-                        <h5 class="text-light text-center">Copyright © 2023 台中思購衣網 by Shopping Clothes</h5>
-                    </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="position-relative">
+                  <a href="https://www.instagram.com/">
+                    <img src="images/index/footer02.jpg" style="width: 100%;" alt="Instagram">
+                    <div class="text-inside-image">Instagram</div>
+                  </a>
                 </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="position-relative">
+                  <a href="https://www.youtube.com/">
+                    <img src="images/index/footer03.jpg" style="width: 100%;" alt="YouTube">
+                    <div class="text-inside-image">YouTube</div>
+                  </a>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="col-md-2"></div>
         </div>
-        <div class="back-top hide" title="回頂部"></div>
-    </section>
+        <div class="row mt-3">
+          <div class="col-12">
+            <h5 class="text-light text-center">Copyright © 2023 台中思購衣網 by Shopping Clothes</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="back-top hide" title="回頂部"></div>
+  </section>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/jquery-3.7.0.min.js"></script>
   <script src="js/wow.min.js"></script>
@@ -295,10 +297,12 @@
           if (flag_chosePay) {
             $.ajax({
               type: "POST",
-              url: APILINKS + "car_u_api.php",
+              url: "api/car_u_api.php",
               dataType: "json",
               data: {
                 p_c_username: Username,
+                p_c_total: allTotal,
+
               },
               success: showdata,
               error: function () {
@@ -317,6 +321,7 @@
     }); // 主程式結尾
 
     function showdata_table(data) {
+      console.log(level);
       $("#carList").empty();
       if (data.state) {
         data.data.forEach(function (item) {
@@ -356,12 +361,34 @@
       }
     }
 
+
     function showdata(data) {
-      if (data.state) {
-        alert("成功送出訂單");
+      console.log(level);
+      console.log(data.data);
+      if (level == 'A') {
+        alert(data.message + data.data); //結帳成功，累積消費:
         location.href = LINKS + "index.html";
-      } else {
-        alert("送出訂單失敗");
+      } else if (data.data > 20000 && level == 'B') {
+        $.ajax({
+          url: APILINKS + "level_u_api.php",
+          type: "POST",
+          dataType: "json",
+          data: {
+            p_c_username: Username,
+            level: "A",
+          },
+          success: function (data) {
+            alert("恭喜您" + data.message + ": 高級");
+            setCookie("level", 'A');
+            location.href = LINKS + "index.html";
+          },
+          error: function () {
+            alert("error-api/level_u_api.php");
+          }
+        });
+      }else {
+        alert(data.message + data.data); //結帳成功，累積消費:
+        location.href = LINKS + "index.html";
       }
     }
   </script>

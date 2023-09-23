@@ -243,6 +243,7 @@ $(function () {
 
   function logout() {
     setCookie("uid01", "", 7);
+    setCookie("level", " ", 7);
     location.href = LINKS + "index.html";
   }
 });
