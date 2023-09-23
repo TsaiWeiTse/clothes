@@ -242,14 +242,12 @@
       // 讀取car資料庫檔案
       $.ajax({
         type: "GET",
-        // url: APILINKS + "car_r_api.php",
-        url: 'openapi\getOpendata.php',
+        url: APILINKS + "car_r_api.php",
         dataType: "json",
         async: false,
         success: showdata_table,
         error: function () {
-          // alert("error-" + APILINKS + "car_r_api.php");
-          alert("error-openapi\getOpendata.php");
+          alert("error-" + APILINKS + "car_r_api.php");
         },
       });
 
@@ -258,15 +256,13 @@
         if (confirm("確認刪除: " + $(this).data("name") + "?")) {
           $.ajax({
             type: "POST",
-            // url: APILINKS + "car_d_api.php",
-            url: 'openapi\getOpendata.php',
+            url: APILINKS + "car_d_api.php",
             data: { id: $(this).data("id") },
             dataType: "json",
             async: false,
             success: showdata_delete,
             error: function () {
-              // alert("error-" + APILINKS + "car_d_api.php");
-              alert("error-openapi\getOpendata.php");
+              alert("error-" + APILINKS + "car_d_api.php");
             },
           });
         }
@@ -299,16 +295,14 @@
           if (flag_chosePay) {
             $.ajax({
               type: "POST",
-              // url: APILINKS + "car_u_api.php",
-              url: 'openapi\getOpendata.php',
+              url: APILINKS + "car_u_api.php",
               dataType: "json",
               data: {
                 p_c_username: Username,
               },
               success: showdata,
               error: function () {
-                // alert("錯誤-" + APILINKS + "car_u_api.php");
-                alert("錯誤-openapi\getOpendata.php");
+                alert("錯誤-" + APILINKS + "car_u_api.php");
               },
             });
           } else {

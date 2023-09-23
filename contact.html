@@ -12,17 +12,17 @@
 
 </head>
 <style>
-        .text-inside-image {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            padding: 5px;
-            font-size: 14px;
-            width: 100%;
-        }
-    </style>
+    .text-inside-image {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 5px;
+        font-size: 14px;
+        width: 100%;
+    }
+</style>
 
 <body>
     <!-- navbar -->
@@ -31,7 +31,8 @@
             <div class="row">
                 <nav>
                     <ul>
-                        <li class="logo"><a href="index.html"><img src="images/index/logoko.png" style="height: 80px;" alt=""></a></li>
+                        <li class="logo"><a href="index.html"><img src="images/index/logoko.png" style="height: 80px;"
+                                    alt=""></a></li>
                         <li class="items"><a href="index.html">Home</a></li>
                         <li class="items"><a href="about.html">About</a></li>
                         <li class="items"><a href="New.html">New</a></li>
@@ -60,8 +61,8 @@
             </div>
         </div>
     </section>
-    
-      <!--loginModal-->
+
+    <!--loginModal-->
     <!-- Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -327,8 +328,7 @@
                     console.log("test");
                     $.ajax({
                         type: "POST",
-                        // url: "api/form_c_api.php",
-                        url: 'openapi\getOpendata.php',
+                        url: APILINKS + "form_c_api.php",
                         dataType: "json",
                         data: {
                             username: $("#user_name").val(),
@@ -338,7 +338,7 @@
                         },
                         success: showdata_reg,
                         error: function () {
-                            alert("表單輸入錯誤-http://localhost/api/form_c_api.php");
+                            alert("表單輸入錯誤-" + APILINKS + "form_c_api.php");
                             console.log($("#user_name").val());
                             console.log($("#phone").val());
                             console.log($("#mail").val());
@@ -367,7 +367,7 @@
                 flag_user_name = false;
             }
         });
-        
+
         $("#phone").bind("input propertychange", function () {
             if ($(this).val().length > 7 && $(this).val().length < 11) {
                 $(this).removeClass("is-invalid");

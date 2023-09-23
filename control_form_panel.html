@@ -117,15 +117,13 @@
                 //uid存在，傳至後端check_uid_api.php確認是否合法
                 $.ajax({
                     type: "POST",
-                    // url: APILINKS + "check_uid_api.php",
-                    url: 'openapi\getOpendata.php',
+                    url: APILINKS + "check_uid_api.php",
                     dataType: "json",
                     data: { uid01: getCookie("uid01") },
                     async: false,
                     success: showdata_check_uid,
                     error: function () {
-                        // alert("error-" + APILINKS + "check_uid_api.php");
-                        alert("error-openapi\getOpendata.php");
+                        alert("error-" + APILINKS + "check_uid_api.php");
                     },
                 });
             } else {
@@ -141,14 +139,12 @@
                 $("#login_message").text("管理員：" + data.data[0].userName);
                 $.ajax({
                     type: "GET",
-                    // url: "api/form_r_api.php",
-                    url: 'openapi\getOpendata.php',
+                    url: APILINKS + "form_r_api.php",
                     dataType: "json",
                     async: false,
                     success: showdata_table,
                     error: function () {
-                        // alert("串接資料錯誤-form_r_api.php");
-                        alert("串接資料錯誤-openapi\getOpendata.php");
+                        alert("串接資料錯誤-" + APILINKS + "form_r_api.php");
                     }
                 });
 
@@ -159,14 +155,12 @@
                     if (confirm("確認刪除: " + $(this).data("username") + "?")) {
                         $.ajax({
                             type: "POST",
-                            // url: "api/form_d_api.php",
-                            url: 'openapi\getOpendata.php',
+                            url: APILINKS + "form_d_api.php",
                             data: { id: $(this).data("id") },
                             dataType: "json",
                             success: showdata_delete,
                             error: function () {
-                                // alert("error-api/form_d_api.php");
-                                alert("error-openapi\getOpendata.php");
+                                alert("error-" + APILINKS + "api/form_d_api.php");
                             }
                         });
                     }
@@ -189,8 +183,7 @@
 
                     $.ajax({
                         type: "POST",
-                        // url: "api/form_u_api.php",
-                        url: 'openapi\getOpendata.php',
+                        url: APILINKS + "form_u_api.php",
                         data: {
                             id: u_id,
                             p_active: $("#p_active").val(),
@@ -198,8 +191,7 @@
                         dataType: "json",
                         success: showdata_update,
                         error: function () {
-                            // alert("error-api/form_u_api.php");
-                            alert("error-openapi\getOpendata.php");
+                            alert("error-" + APILINKS + "api/form_u_api.php");
                         }
                     });
                 });
@@ -228,8 +220,7 @@
                     }
                     $.ajax({
                         type: "POST",
-                        // url: "api/form_u_api_userstate_api.php",
-                        url: 'openapi\getOpendata.php',
+                        url: APILINKS + "form_u_api_userstate_api.php",
                         data: {
                             id: state_id,
                             active: readstate
@@ -237,8 +228,7 @@
                         dataType: "json",
                         success: showdata_u_userState,
                         error: function () {
-                            // alert("error-api/form_u_api_userstate_api.php");
-                            alert("error-openapi\getOpendata.php");
+                            alert("error-" + APILINKS + "api/form_u_api_userstate_api.php");
                         }
                     });
                 });

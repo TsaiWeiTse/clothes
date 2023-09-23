@@ -155,15 +155,13 @@
                 //uid存在，傳至後端check_uid_api.php確認是否合法
                 $.ajax({
                     type: "POST",
-                    // url: APILINKS + "check_uid_api.php",
-                    url: 'openapi\getOpendata.php',
+                    url: APILINKS + "check_uid_api.php",
                     dataType: "json",
                     data: { uid01: getCookie("uid01") },
                     async: false,
                     success: showdata_check_uid,
                     error: function () {
-                        // alert("error-" + APILINKS + "check_uid_api.php");
-                        alert("error-openapi\getOpendata.php");
+                        alert("error-" + APILINKS + "check_uid_api.php");
                     },
                 });
             } else {
@@ -174,19 +172,17 @@
         });
         // 監聽要放在這裡面
         function showdata_check_uid(data) {
-           
+
             if (data.data[0].userAdmin == "1") {
-                 $("#login_message").text("管理員：" + data.data[0].userName);
+                $("#login_message").text("管理員：" + data.data[0].userName);
                 $.ajax({
                     type: "Get",
-                    // url: "api/admin_r_api.php",
-                    url: 'openapi\getOpendata.php',
+                    url: APILINKS + "admin_r_api.php",
                     dataType: "json",
                     async: false,
                     success: showdata_table,
                     error: function () {
-                        // console.log("error-api/admin_r_api.php");
-                        alert("error-openapi\getOpendata.php");
+                        console.log("error-" + APILINKS + "admin_r_api.php")
                     }
                 });
                 //delete_btn按鈕監聽 要放在主程式
@@ -196,14 +192,12 @@
                     if (confirm("確認刪除: " + $(this).data("username") + "?")) {
                         $.ajax({
                             type: "POST",
-                            // url: "api/admin_d_api.php",
-                            url: 'openapi\getOpendata.php',
+                            url: APILINKS + "admin_d_api.php",
                             data: { id: $(this).data("id") },
                             dataType: "json",
                             success: showdata_delete,
                             error: function () {
-                                // alert("error-api/admin_d_api.php");
-                                alert("error-openapi\getOpendata.php");
+                                alert("error-" + APILINKS + "admin_d_api.php");
                             }
                         });
                     }
@@ -235,14 +229,12 @@
 
                     $.ajax({
                         type: "POST",
-                        // url: "api/admin_u_api.php",
-                        url: 'openapi\getOpendata.php',
+                        url: APILINKS + "admin_u_api.php",
                         data: { id: u_id, userPhone: $("#userphone").val(), userAddr: $("#useraddr").val(), userMail: $("#usermail").val() },
                         dataType: "json",
                         success: showdata_update,
                         error: function () {
-                            // alert("error-api/admin_u_api.php");
-                            alert("error-openapi\getOpendata.php");
+                            alert("error-" + APILINKS + "admin_u_api.php");
                         }
                     });
                 });
@@ -271,14 +263,12 @@
                     }
                     $.ajax({
                         type: "POST",
-                        // url: "api/admin_u_userState_api.php",
-                        url: 'openapi\getOpendata.php',
+                        url: APILINKS + "admin_u_userState_api.php",
                         data: { id: state_id, userstate: userstate },
                         dataType: "json",
                         success: showdata_u_userState,
                         error: function () {
-                            // alert("error-api/admin_u_userState_api.php");
-                            alert("error-openapi\getOpendata.php");
+                            alert("error-" + APILINKS + "admin_u_userState_api.php");
                         }
                     });
 
@@ -293,69 +283,69 @@
 
 
 
-            function showdata_table(data) {
-                console.log(data);
-                if (data.state) {
-                    $("#mem_table").empty();
-                    data.data.forEach(function (item) {
-                        console.log(item);
+        function showdata_table(data) {
+            console.log(data);
+            if (data.state) {
+                $("#mem_table").empty();
+                data.data.forEach(function (item) {
+                    console.log(item);
 
-                        if (item.userState == 'Y') {
-                            var switch01 = '<div class="text-success mb-3 form-check form-switch"><input type="checkbox" class="form-check-input" role="switch" checked id="switch01" data-id="' + item.ID + '"><label for="" class="form-check-label">啟用</label></div>';
-                        } else {
-                            var switch01 = '<div class="text-danger mb-3 form-check form-switch"><input type="checkbox" class="form-check-input" role="switch" id="switch01" data-id="' + item.ID + '"><label for="" class="form-check-label">停權</label></div>';
-                        }
-                        if (item.userAdmin == '2') {
-                            var strHTML = ' <tr class="bg-light"><td data-th="編號"><span class="table-col">' + item.ID + '</span></td><td data-th="帳號"><span class="table-col">' + item.userName + '</span></td><td data-th="電話"><span class="table-col">' + item.userPhone + '</span></td><td data-th="地址"><span class="table-col">' + item.userAddr + '</span></td><td data-th="Email"><span class="table-col">' + item.userMail + '</span></td><td data-th="帳號狀態"><span class="table-col">' + switch01 + '</span></td><td data-th="註冊時間"><span class="table-col">' + item.userDate + '</span></td><td><a href="#" class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#updateModal" data-id="' + item.ID + '" data-username="' + item.userName + '" data-userphone="' + item.userPhone + '" data-useraddr="' + item.userAddr + '" data-usermail="' + item.userMail + '" id="updata_btn">更新</a><a href="#" class="btn btn-danger" data-id="' + item.ID + '" data-username="' + item.userName + '" id="delete_btn">刪除</a></td></tr>';
+                    if (item.userState == 'Y') {
+                        var switch01 = '<div class="text-success mb-3 form-check form-switch"><input type="checkbox" class="form-check-input" role="switch" checked id="switch01" data-id="' + item.ID + '"><label for="" class="form-check-label">啟用</label></div>';
+                    } else {
+                        var switch01 = '<div class="text-danger mb-3 form-check form-switch"><input type="checkbox" class="form-check-input" role="switch" id="switch01" data-id="' + item.ID + '"><label for="" class="form-check-label">停權</label></div>';
+                    }
+                    if (item.userAdmin == '2') {
+                        var strHTML = ' <tr class="bg-light"><td data-th="編號"><span class="table-col">' + item.ID + '</span></td><td data-th="帳號"><span class="table-col">' + item.userName + '</span></td><td data-th="電話"><span class="table-col">' + item.userPhone + '</span></td><td data-th="地址"><span class="table-col">' + item.userAddr + '</span></td><td data-th="Email"><span class="table-col">' + item.userMail + '</span></td><td data-th="帳號狀態"><span class="table-col">' + switch01 + '</span></td><td data-th="註冊時間"><span class="table-col">' + item.userDate + '</span></td><td><a href="#" class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#updateModal" data-id="' + item.ID + '" data-username="' + item.userName + '" data-userphone="' + item.userPhone + '" data-useraddr="' + item.userAddr + '" data-usermail="' + item.userMail + '" id="updata_btn">更新</a><a href="#" class="btn btn-danger" data-id="' + item.ID + '" data-username="' + item.userName + '" id="delete_btn">刪除</a></td></tr>';
 
-                            $("#mem_table").append(strHTML);
-                        }
-                    });
-                } else {
-                    alert(data.message);
-                }
+                        $("#mem_table").append(strHTML);
+                    }
+                });
+            } else {
+                alert(data.message);
             }
+        }
 
-            function showdata_update(data) {
-                console.log(data);
-                if (data.state) {
-                    alert(data.message);
-                    location.href = "conrtol_mem_panel.html";
-                } else {
-                    alert(data.message);
-                }
+        function showdata_update(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "conrtol_mem_panel.html";
+            } else {
+                alert(data.message);
             }
+        }
 
-            function showdata_delete(data) {
-                console.log(data);
-                if (data.state) {
-                    alert(data.message);
-                    location.href = "conrtol_mem_panel.html";
-                } else {
-                    alert(data.message);
-                }
+        function showdata_delete(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "conrtol_mem_panel.html";
+            } else {
+                alert(data.message);
             }
+        }
 
 
 
 
-            function logout() {
-                setCookie('uid01', '', 7);
-                location.href = "index.html";
+        function logout() {
+            setCookie('uid01', '', 7);
+            location.href = "index.html";
 
+        }
+
+        function showdata_u_userState(data) {
+            console.log(data);
+            if (data.state) {
+                // 帳號更新成功
+                alert(data.message);
+            } else {
+                // 帳號更新失敗
+                alert(data.message);
             }
+        }
 
-            function showdata_u_userState(data) {
-                console.log(data);
-                if (data.state) {
-                    // 帳號更新成功
-                    alert(data.message);
-                } else {
-                    // 帳號更新失敗
-                    alert(data.message);
-                }
-            }
-        
     </script>
 </body>
 

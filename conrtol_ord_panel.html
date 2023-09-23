@@ -137,8 +137,7 @@
             created() {
                 const vm = this;
                 $.ajax({
-                    // url: 'api/car_r_api.php',
-                    url: 'openapi\getOpendata.php',
+                    url: APILINKS + 'car_r_api.php',
                     dataType: 'json',
                     success: function (data) {
                         console.log(data.data);

@@ -17,13 +17,11 @@ $(function () {
       $.ajax({
         type: "POST",
         url: APILINKS + "reg_check_uni_api.php",
-        // url: 'openapi\getOpendata.php',
         data: { username: $("#username").val() },
         dataType: "json",
         success: showdata_check_uni,
         error: function () {
           alert("帳號確認-" + APILINKS + "reg_check_uni_api.php");
-          // alert("帳號確認-openapi\getOpendata.php");
         },
       });
     } else {
@@ -138,7 +136,6 @@ $(function () {
       $.ajax({
         type: "POST",
         url: APILINKS + "reg_api.php",
-        // url: 'openapi\getOpendata.php',
         data: {
           username: $("#username").val(),
           userpwd: $("#userpwd").val(),
@@ -150,7 +147,6 @@ $(function () {
         success: showdata_reg,
         error: function () {
           alert("註冊錯誤-" + APILINKS + "reg_api.php");
-          // alert("註冊錯誤-openapi\getOpendata.php");
         },
       });
     } else {
@@ -163,9 +159,7 @@ $(function () {
   $("#login_btn").click(function () {
     $.ajax({
       type: "POST",
-      // url: APILINKS + "login_api.php",
-      // url: 'openapi\getOpendata.php',
-      url: 'https://tsaiweitse.github.io/clothes/openapi/data_login_api.php',
+      url: APILINKS + "login_api.php",
       data: {
         username: $("#login_username").val(),
         userpwd: $("#login_password").val(),
@@ -174,14 +168,12 @@ $(function () {
       async: false,
       success: showdata_login,
       error: function () {
-        // alert("登入相關錯誤-" + APILINKS + "login_api.php");
-        // alert("登入相關錯誤-openapi\getOpendata.php");
-        alert("登入相關錯誤-https://tsaiweitse.github.io/clothes/openapi/data_login_api.php");
+        alert("登入相關錯誤-" + APILINKS + "login_api.php");
       },
     });
   });
 
-  //按鈕監聽logout_btn
+  //按鈕監聽s10_logout_btn
   $("#logout_btn").click(function () {
     logout();
   });

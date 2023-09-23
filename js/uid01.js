@@ -11,14 +11,12 @@ $(function () {
     $.ajax({
       type: "POST",
       url: APILINKS + "check_uid_api.php",
-      // url: 'openapi\getOpendata.php',
       dataType: "json",
       data: { uid01: getCookie("uid01") },
       async: false,
       success: showdata_check_uid,
       error: function () {
         alert("error-" + APILINKS + "check_uid_api.php");
-        // alert("error-openapi\getOpendata.php");
       },
     });
   }
